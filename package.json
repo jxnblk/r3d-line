@@ -1,0 +1,28 @@
+{
+  "name": "r3d-line",
+  "version": "1.0.0-beta.0",
+  "description": "Responsive React-rendered line chart",
+  "main": "Line.js",
+  "scripts": {
+    "test": "node test/render",
+    "build": "webpack -p --progress --colors",
+    "dev": "webpack -w --progress --colors",
+    "start": "npm run dev"
+  },
+  "author": "Brent Jackson",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^3.9.2",
+    "lodash.max": "^3.3.1",
+    "lodash.min": "^3.3.1",
+    "node-libs-browser": "^0.5.2",
+    "react": "^0.13.3",
+    "react-tools": "^0.13.3",
+    "webpack": "^1.9.9",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "devDependencies": {
+    "babel-core": "^5.4.7",
+    "babel-loader": "^5.1.3"
+  }
+}
