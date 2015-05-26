@@ -6,14 +6,10 @@ import React from 'react';
 
 class Line extends React.Component {
 
-  //renderLine(line, i) {
-  //  return (
-  //    <Path
-  //      key={'line-'+i}
-  //      {...this.props}
-  //      {...line} />
-  //  )
-  //}
+  constructor() {
+    super();
+    this.getMinMax = this.getMinMax.bind(this);
+  }
 
   getMinMax() {
     var min;
@@ -35,6 +31,7 @@ class Line extends React.Component {
   }
 
   render() {
+
     var styles = {
       container: {},
       inner: {
@@ -68,10 +65,9 @@ class Line extends React.Component {
     var width = props.data[0].values.length - 1;
     var height = max - min;
     var viewBox = [ 0, 0, width, height ].join(' ');
-    var data = props.data;
 
-    console.log(height, props.data[0].values);
-
+    var xAxis = props.xAxis ? <XAxis /> : false;
+    var yAxis = props.yAxis ? <YAxis /> : false;
     return (
       <div style={styles.container}>
         <div style={styles.inner}>
@@ -80,27 +76,27 @@ class Line extends React.Component {
             viewBox={viewBox}
             preserveAspectRatio="none"
             style={styles.svg}>
-            {data.map(function(line, i) {
-                return (
-                  <Path
-                    key={'line-'+i}
-                    {...props}
-                    {...line}
-                    width={width}
-                    height={height}
-                    min={min}
-                    max={max} />
-                )
-              })}
+            {props.data.map(function(line, i) {
+              return (
+                <Path
+                  key={'line-'+i}
+                  {...props}
+                  {...line}
+                  width={width}
+                  height={height}
+                  min={min}
+                  max={max} />
+              )
+            })}
           </svg>
-          {/*
+          {
           <div style={styles.axes}>
             {xAxis}
             {yAxis}
-            {yAxisRules}
-            {yAxisLabels}
+            {/*yAxisRules*/}
+            {/*yAxisLabels*/}
           </div>
-            */}
+            }
         </div>
       </div>
     )
@@ -148,7 +144,7 @@ class Path extends React.Component {
       max,
       width,
       height,
-      color
+      color,
     } = this.props;
     var styles = {
       path: {
@@ -157,12 +153,19 @@ class Path extends React.Component {
         strokeWidth: 2,
         strokeLinejoin: 'round',
         vectorEffect: 'non-scaling-stroke'
+      },
+      area: {
+        fill: color,
+        opacity: this.props.areaOpacity,
+        mixBlendMode: 'multiply'
       }
     };
+
     var pathData = 'M0 ' + height + ' ';
     pathData += this.props.values.map(function(val, i) {
-      return (i === 0 ? 'M' : 'L') + i + ' ' + (height - val);
+      return (i === 0 ? 'M' : 'L') + i + ' ' + (height + min - val);
     }).join(' ');
+
     var area = false;
     if (this.props.area) {
       var areaPath = [
@@ -182,7 +185,41 @@ class Path extends React.Component {
       </g>
     )
   }
+
 }
+
+class XAxis extends React.Component {
+  render() {
+    var style = {
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
+      left: 0,
+      borderTopWidth: 1,
+      borderTopStyle: 'solid',
+      borderTopColor: 'currentcolor',
+      opacity: 0.25,
+    };
+    return <div style={style} />
+  }
+};
+
+
+class YAxis extends React.Component {
+  render() {
+    var style = {
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      left: 0,
+      borderWidth: 1,
+      borderStyle: 'solid',
+      borderColor: 'currentcolor',
+      opacity: 0.25
+    }
+    return <div style={style} />
+  }
+};
 
 export default Line;
 
@@ -335,22 +372,6 @@ Line.Legend = React.createClass({
 });
 */
 
-
-/*
-Line.XAxis = React.createClass({
-  render: function() {
-    var style = {
-      position: 'absolute',
-      bottom: 0,
-      right: 0,
-      left: 0,
-    };
-    return (
-      <div style={style} className="border-top"/>
-    )
-  }
-});
-*/
 
 /*
 Line.YAxis = React.createClass({

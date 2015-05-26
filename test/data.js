@@ -1,5 +1,7 @@
 
 module.exports = {
+  area: true,
+  //yAxis: true,
   data: [
     {
       label: 'Test',
