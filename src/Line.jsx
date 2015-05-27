@@ -3,12 +3,12 @@
 import _max from 'lodash.max';
 import _min from 'lodash.min';
 import React from 'react';
-import Path from './Path.jsx';
-import XAxis from './XAxis.jsx';
-import YAxis from './YAxis.jsx';
-import YAxisRules from './YAxisRules.jsx';
-import YAxisLabels from './YAxisLabels.jsx';
-import Legend from './Legend.jsx';
+import Path from './Path';
+import XAxis from './XAxis';
+import YAxis from './YAxis';
+import YAxisRules from './YAxisRules';
+import YAxisLabels from './YAxisLabels';
+import Legend from './Legend';
 
 class Line extends React.Component {
 

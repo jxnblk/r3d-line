@@ -28,29 +28,29 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _PathJsx = require('./Path.jsx');
+var _Path = require('./Path');
 
-var _PathJsx2 = _interopRequireDefault(_PathJsx);
+var _Path2 = _interopRequireDefault(_Path);
 
-var _XAxisJsx = require('./XAxis.jsx');
+var _XAxis = require('./XAxis');
 
-var _XAxisJsx2 = _interopRequireDefault(_XAxisJsx);
+var _XAxis2 = _interopRequireDefault(_XAxis);
 
-var _YAxisJsx = require('./YAxis.jsx');
+var _YAxis = require('./YAxis');
 
-var _YAxisJsx2 = _interopRequireDefault(_YAxisJsx);
+var _YAxis2 = _interopRequireDefault(_YAxis);
 
-var _YAxisRulesJsx = require('./YAxisRules.jsx');
+var _YAxisRules = require('./YAxisRules');
 
-var _YAxisRulesJsx2 = _interopRequireDefault(_YAxisRulesJsx);
+var _YAxisRules2 = _interopRequireDefault(_YAxisRules);
 
-var _YAxisLabelsJsx = require('./YAxisLabels.jsx');
+var _YAxisLabels = require('./YAxisLabels');
 
-var _YAxisLabelsJsx2 = _interopRequireDefault(_YAxisLabelsJsx);
+var _YAxisLabels2 = _interopRequireDefault(_YAxisLabels);
 
-var _LegendJsx = require('./Legend.jsx');
+var _Legend = require('./Legend');
 
-var _LegendJsx2 = _interopRequireDefault(_LegendJsx);
+var _Legend2 = _interopRequireDefault(_Legend);
 
 var Line = (function (_React$Component) {
   function Line() {
@@ -125,11 +125,11 @@ var Line = (function (_React$Component) {
       var height = max - min;
       var viewBox = [0, 0, width, height].join(' ');
 
-      var xAxis = props.xAxis ? _react2['default'].createElement(_XAxisJsx2['default'], null) : false;
-      var yAxis = props.yAxis ? _react2['default'].createElement(_YAxisJsx2['default'], null) : false;
-      var yAxisRules = props.yAxisRules ? _react2['default'].createElement(_YAxisRulesJsx2['default'], { rules: props.yAxisRules }) : false;
-      var yAxisLabels = props.yAxisLabels ? _react2['default'].createElement(_YAxisLabelsJsx2['default'], _extends({}, props, { min: min, max: max })) : false;
-      var legend = props.legend ? _react2['default'].createElement(_LegendJsx2['default'], props) : false;
+      var xAxis = props.xAxis ? _react2['default'].createElement(_XAxis2['default'], null) : false;
+      var yAxis = props.yAxis ? _react2['default'].createElement(_YAxis2['default'], null) : false;
+      var yAxisRules = props.yAxisRules ? _react2['default'].createElement(_YAxisRules2['default'], { rules: props.yAxisRules }) : false;
+      var yAxisLabels = props.yAxisLabels ? _react2['default'].createElement(_YAxisLabels2['default'], _extends({}, props, { min: min, max: max })) : false;
+      var legend = props.legend ? _react2['default'].createElement(_Legend2['default'], props) : false;
 
       return _react2['default'].createElement(
         'div',
@@ -145,7 +145,7 @@ var Line = (function (_React$Component) {
               preserveAspectRatio: 'none',
               style: styles.svg },
             props.data.map(function (line, i) {
-              return _react2['default'].createElement(_PathJsx2['default'], _extends({
+              return _react2['default'].createElement(_Path2['default'], _extends({
                 key: 'line-' + i
               }, props, line, {
                 width: width,
