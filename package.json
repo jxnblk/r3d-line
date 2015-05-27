@@ -7,7 +7,7 @@
     "test": "node test/render",
     "build": "webpack --progress --colors",
     "dev": "webpack -w --progress --colors",
-    "babel": "babel src/Line.jsx -o Line.js",
+    "babel": "babel src --out-dir .",
     "start": "npm run dev"
   },
   "author": "Brent Jackson",
