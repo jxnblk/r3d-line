@@ -1,8 +1,8 @@
-# r3c-line
+# r3d-line
 
-_Or_
-- r3d-line
 
-## Names
-- r3c
-- r3d
+## To do:
+- [x] width/height: 100% on svg
+- [ ] Account for min value on y-axis labels
+- [ ] x-axis labels
+- [ ] x-axis rules
